@@ -1,0 +1,26 @@
+# ══ Node ══
+node_modules/
+npm-debug.log*
+
+# ══ Environnement (SECRETS) ══
+.env
+backend/.env
+frontend/.env
+
+# ══ Uploads (fichiers utilisateurs) ══
+backend/uploads/
+
+# ══ Build frontend ══
+frontend/build/
+
+# ══ Logs ══
+*.log
+logs/
+
+# ══ OS ══
+.DS_Store
+Thumbs.db
+
+# ══ IDE ══
+.vscode/
+.idea/
