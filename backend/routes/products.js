@@ -70,6 +70,7 @@ const deleteOldImage = (imagePath) => {
 router.get('/', optionalAuth, validateProductQuery, productsController.listProducts);
 router.get('/seller/me', protect, productsController.getMyProducts);
 router.get('/:id', validateMongoId, productsController.getProductById);
+router.post('/:id/clicks', validateMongoId, productsController.incrementClicks);
 router.post('/', protect, requireRole('vendeur', 'admin'), uploadSingle, validateProduct, async (req, res) => {
   const response = await productsController.createProduct(req, res);
   if (res.statusCode >= 400 && req.file) {

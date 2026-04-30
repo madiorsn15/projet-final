@@ -50,14 +50,44 @@ const getMyProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id)
-      .populate('seller', 'name whatsapp');
+      .populate({
+        path: 'seller',
+        select: 'name whatsapp email'
+      });
 
     if (!product) return res.status(404).json({ message: 'Produit introuvable.' });
 
-    Product.findByIdAndUpdate(req.params.id, { $inc: { views: 1 } }).exec();
+    // Debug - afficher les données du produit et vendeur
+    console.log('[DEBUG] Produit trouvé:', JSON.stringify(product, null, 2));
+    console.log('[DEBUG] Vendeur WhatsApp:', product.seller?.whatsapp);
+    console.log('[DEBUG] Vendeur complet:', product.seller);
+
+    // Incrémenter le compteur de vues (nouveau champ)
+    Product.findByIdAndUpdate(req.params.id, { $inc: { viewsCount: 1, views: 1 } }).exec();
     return res.json({ product });
   } catch (error) {
     console.error('[Products] GET /:id:', error.message);
+    return res.status(500).json({ message: 'Erreur serveur.' });
+  }
+};
+
+/**
+ * Incrémente le compteur de clics WhatsApp d'un produit
+ * Utilisé lorsqu'un utilisateur clique sur le bouton WhatsApp
+ */
+const incrementClicks = async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    const product = await Product.findById(id);
+    if (!product) return res.status(404).json({ message: 'Produit introuvable.' });
+
+    // Incrémenter le compteur de clics WhatsApp
+    await Product.findByIdAndUpdate(id, { $inc: { clicksCount: 1 } });
+
+    return res.json({ message: 'Clic WhatsApp comptabilisé.' });
+  } catch (error) {
+    console.error('[Products] POST /:id/clicks:', error.message);
     return res.status(500).json({ message: 'Erreur serveur.' });
   }
 };
@@ -143,6 +173,7 @@ module.exports = {
   listProducts,
   getMyProducts,
   getProductById,
+  incrementClicks,
   createProduct,
   updateProduct,
   deleteProduct,

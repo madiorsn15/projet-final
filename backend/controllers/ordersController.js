@@ -26,6 +26,11 @@ const createOrder = async (req, res) => {
       notes: notes || '',
     });
 
+    // Incrémenter le compteur de commandes du produit
+    await Product.findByIdAndUpdate(productId, { 
+      $inc: { ordersCount: 1 } 
+    });
+
     await order.populate('product', 'name price image seller');
     console.log(`[Orders] Créée — ID: ${order._id} | Produit: ${productId}`);
 

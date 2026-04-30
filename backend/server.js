@@ -27,7 +27,7 @@ app.use(helmet({
 
 app.use(rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 200,
+  max: 1000,
   message: { message: 'Trop de requêtes depuis cette IP. Réessayez dans 15 minutes.' },
   standardHeaders: true,
   legacyHeaders: false,
@@ -42,7 +42,7 @@ const authLimiter = rateLimit({
 
 const uploadLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
-  max: 20,
+  max: 100,
   message: { message: 'Limite d\'uploads atteinte. Réessayez dans 1 heure.' },
 });
 

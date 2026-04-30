@@ -24,10 +24,10 @@ const getProducts = (sellerId1, sellerId2) => [
   { name: 'Samsung Galaxy A54', price: 195000, description: 'Téléphone Samsung neuf, déballé. Garantie 1 an. Couleur noire.', category: 'Électronique', seller: sellerId1 },
   { name: 'Boubou Brodé Grand Bazin', price: 35000, description: 'Magnifique boubou en grand bazin riche brodé main. Taille disponible : M, L, XL. Couleur bleue marine.', category: 'Vêtements', seller: sellerId1 },
   { name: 'Thiéboudienne Maison', price: 5000, description: 'Thiéboudienne au poisson frais, cuisine maison. Livraison disponible à Dakar Plateau. Minimum 2 portions.', category: 'Alimentation', seller: sellerId2 },
-  { name: 'Canapé 3 places en cuir', price: 180000, description: 'Canapé en cuir véritable, couleur marron. Très bon état, déménagement oblige. À récupérer à Almadies.', category: 'Maison', seller: sellerId2 },
-  { name: 'Huile de coco artisanale 500ml', price: 3500, description: 'Huile de coco 100% naturelle, pressée à froid. Idéale cheveux et peau. Fabrication locale.', category: 'Beauté', seller: sellerId2 },
-  { name: 'Vélo de route Trek 21 vitesses', price: 120000, description: 'Vélo de route en bon état. 21 vitesses, taille M. Utilisé 6 mois seulement.', category: 'Sport', seller: sellerId1 },
-  { name: 'Pneus Michelin 205/55 R16 (x4)', price: 85000, description: 'Lot de 4 pneus Michelin, usure 70%. Taille 205/55 R16. Convient pour Citroën, Peugeot, VW.', category: 'Automobile', seller: sellerId2 },
+  { name: 'Canapé 3 places en cuir', price: 180000, description: 'Canapé en cuir véritable, couleur marron. Très bon état, déménagement oblige. À récupérer à Almadies.', category: 'Maison & Jardin', seller: sellerId2 },
+  { name: 'Huile de coco artisanale 500ml', price: 3500, description: 'Huile de coco 100% naturelle, pressée à froid. Idéale cheveux et peau. Fabrication locale.', category: 'Beauté & Santé', seller: sellerId2 },
+  { name: 'Vélo de route Trek 21 vitesses', price: 120000, description: 'Vélo de route en bon état. 21 vitesses, taille M. Utilisé 6 mois seulement.', category: 'Sports & Loisirs', seller: sellerId1 },
+  { name: 'Pneus Michelin 205/55 R16 (x4)', price: 85000, description: 'Lot de 4 pneus Michelin, usure 70%. Taille 205/55 R16. Convient pour Citroën, Peugeot, VW.', category: 'Automobiles', seller: sellerId2 },
 ];
 
 async function seed() {
